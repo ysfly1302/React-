@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>React Practice</title>
+  <link rel="stylesheet" href="style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!--ここから-->
   <script src="https://unpkg.com/react@16/umd/react.development.js"></script> <!--React本体-->
@@ -12,73 +13,18 @@
   <!--ここまでを追加-->
 </head>
 <body>
-  <div id="container"></div>
+  <div id="root"></div> <!-- UIを表示-->
   <script type="text/babel"> // text/babelにする
           //JSXはReact独自の言語
-        class Square extends React.Component {
-       render() { //render=
-         return ( //return=処理結果を戻す
-           <button className="square"> //JSXではclassName
-             {/* TODO */} //変数は{}
-           </button>
-         );
-       }
-      }
+      (()=>{
+        ReactDOM.render(
+          <p>Hello!</p>
+          document.getElementById('root') //Hello!をroot内に表示する
+        );
 
-      class Board extends React.Component { //3*3マスのレンタリング
-       renderSquare(i) {
-         return <Square />;
-       }
-
-       render() {
-         const status = 'Next player: X';
-
-         return (
-           <div>
-             <div className="status">{status}</div>
-             <div className="board-row">
-               {this.renderSquare(0)}
-               {this.renderSquare(1)}
-               {this.renderSquare(2)}
-             </div>
-             <div className="board-row">
-               {this.renderSquare(3)}
-               {this.renderSquare(4)}
-               {this.renderSquare(5)}
-             </div>
-             <div className="board-row">
-               {this.renderSquare(6)}
-               {this.renderSquare(7)}
-               {this.renderSquare(8)}
-             </div>
-           </div>
-         );
-       }
-      }
-
-      class Game extends React.Component {
-       render() {
-         return (
-           <div className="game">
-             <div className="game-board">
-               <Board />
-             </div>
-             <div className="game-info">
-               <div>{/* status */}</div>
-               <ol>{/* TODO */}</ol>
-             </div>
-           </div>
-         );
-       }
-      }
-
-      // ========================================
-
-      ReactDOM.render( //div要素のcontainerに対してGameコンポーネントDOMが入る
-       <Game />,
-       document.getElementById('root')
-      );
-
+          });
+        );
+      })();
   </script>
 </body>
 </html>
